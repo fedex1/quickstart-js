@@ -34,23 +34,30 @@ function handleFileSelect(e: Event) {
   if (!target || !files) {
     return;
   }
-
-  const file = files[0];
-
+  console.log(`TRACE: files: ${JSON.stringify(files)}`);
+  for (let parmfile of files){
+    console.log(`TRACE: file: ${JSON.stringify(parmfile)}`);
+    console.log(`TRACE: file: ${parmfile.name}`);
+   // const file = files[0];
+   const file=parmfile;
+    linkBox.innerHTML="";
   // Push to child path.
   uploadBytes(ref(storageRef, 'images/' + file.name), file)
     .then(function (snapshot) {
       console.log('Uploaded', snapshot.metadata.size, 'bytes.');
       console.log('File metadata:', snapshot.metadata);
+      console.log('File ref:', snapshot.ref);
       // Let's get a download URL for the file.
       getDownloadURL(snapshot.ref).then(function (url) {
         console.log('File available at', url);
-        linkBox.innerHTML = '<a href="' + url + '">Click For File</a>';
+        linkBox.innerHTML += '<a target="_blank" href="' + url + '">Click For File</a><br>';
       });
     })
     .catch(function (error) {
       console.error('Upload failed:', error);
     });
+  }
+
 }
 
 fileInput.addEventListener('change', handleFileSelect, false);

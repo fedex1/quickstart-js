@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "admin-citytri-marketing",
     "public": "dist",
     "ignore": [
       "firebase.json",
