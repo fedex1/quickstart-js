@@ -10,8 +10,11 @@ import {
   signOut,
 } from 'firebase/auth';
 import { firebaseConfig } from './config';
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 
-initializeApp(firebaseConfig);
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 const auth = getAuth();
 
@@ -132,6 +135,17 @@ function sendPasswordReset() {
     });
 }
 
+    async function getData() {
+        try {
+            const querySnapshot = await getDocs(collection(db, "your_collection_name"));
+            querySnapshot.forEach((doc) => {
+                console.log(doc.id, " => ", doc.data());
+            });
+        } catch (error) {
+            console.error("Error getting documents: ", error);
+        }
+    }
+
 // Listening for auth state changes.
 onAuthStateChanged(auth, function (user) {
   verifyEmailButton.disabled = true;
@@ -150,6 +164,8 @@ onAuthStateChanged(auth, function (user) {
     if (!emailVerified) {
       verifyEmailButton.disabled = false;
     }
+    debugger
+    getData();
   } else {
     // User is signed out.
     signInStatus.textContent = 'Signed out';

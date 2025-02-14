@@ -28,7 +28,8 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "firebase": "^10.1.0",
+    "firebase": "^10.14.1",
+    "firebase-tools": "^13.31.1",
     "jsrsasign": "^10.8.6"
   }
 }
