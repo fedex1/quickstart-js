@@ -191,6 +191,7 @@ async function getData(uid) {
         if (docSnap.exists()) {
             console.log("Document data:", JSON.stringify(docSnap.data()));
             profileDetails.textContent = JSON.stringify(docSnap.data(), null, '  ');
+            localStorage.setItem('tidalforce-profile', JSON.stringify(docSnap.data()))
         } else {
             // docSnap.data() will be undefined in this case
             console.log("No such document!");
