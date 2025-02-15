@@ -8,6 +8,7 @@ npm run buildrentals
 cd -
 # mkdir  dist/main
 cp ../../typesense-instantsearch-demo/dist/* dist
+cp ../../prop-marketing/firebase/public/maprentals.html dist
 
 
 
