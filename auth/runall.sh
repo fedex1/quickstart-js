@@ -1,4 +1,6 @@
 #!
+source $NVM_DIR/nvm.sh;
+nvm use v18.18.2
 npm run build
 
 cd ../../typesense-instantsearch-demo
