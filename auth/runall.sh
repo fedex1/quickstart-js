@@ -13,6 +13,13 @@ cp ../../typesense-instantsearch-demo/dist/* dist
 cp ../../prop-marketing/firebase/public/maprentals.html dist
 
 
+cd ../../typesense-instantsearch-demo
+cp src/app.voters.js src/app.js
+npm run clean
+npm run buildvoters
+cd -
+# mkdir  dist/main
+cp ../../typesense-instantsearch-demo/dist/* dist
 
 npx firebase deploy
 
